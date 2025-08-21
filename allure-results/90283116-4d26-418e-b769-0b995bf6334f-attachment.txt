@@ -1,0 +1,131 @@
+[
+  '--None--',
+  'CC',
+  'From',
+  'From Name',
+  'Header',
+  'Subject',
+  'To',
+  'Attachments',
+  'Attachment File Names',
+  'Special Flags'
+]
+10
+[
+  '--None--',
+  'Contains',
+  'Ends With',
+  'Matches Regex',
+  'Starts with',
+  'Matches Text'
+]
+6
+[ '--None--', 'Text', 'Regex Selector', 'Path', 'Fixed', 'Full Value' ]
+6
+[
+  '--None--',       'Text',
+  'Regex Selector', 'Path',
+  'Fixed',          'Full Value',
+  '--None--',       'Attached File Names',
+  'To',             'From',
+  'From Name',      'CC',
+  'Text Body',      'HTML Body',
+  'Subject',        'Header',
+  'MessageId',      'Email Send Date'
+]
+18
+[
+  '--None--',       'Text',
+  'Regex Selector', 'Path',
+  'Fixed',          'Full Value',
+  '--None--',       'Attached File Names',
+  'To',             'From',
+  'From Name',      'CC',
+  'Text Body',      'HTML Body',
+  'Subject',        'Header',
+  'MessageId',      'Email Send Date',
+  '--None--',       'First',
+  'Last',           'All',
+  'Custom'
+]
+23
+FP-000368Open FP-000368 Preview
+[
+  '--None--',
+  'Any of Characters',
+  'BlankSpace',
+  'Position',
+  'Regex',
+  'Text Delimiter'
+]
+6
+[
+  '--None--',
+  'End of Line',
+  'Text Delimiter',
+  'Regex',
+  'Any of Characters',
+  'Position',
+  'BlankSpace'
+]
+7
+ Kumar
+[ '--None--', 'Text', 'Regex Selector', 'Path', 'Fixed', 'Full Value' ]
+6
+[
+  '--None--',       'Text',
+  'Regex Selector', 'Path',
+  'Fixed',          'Full Value',
+  '--None--',       'Attached File Names',
+  'To',             'From',
+  'From Name',      'CC',
+  'Text Body',      'HTML Body',
+  'Subject',        'Header',
+  'MessageId',      'Email Send Date'
+]
+18
+[
+  '--None--',       'Text',
+  'Regex Selector', 'Path',
+  'Fixed',          'Full Value',
+  '--None--',       'Attached File Names',
+  'To',             'From',
+  'From Name',      'CC',
+  'Text Body',      'HTML Body',
+  'Subject',        'Header',
+  'MessageId',      'Email Send Date',
+  '--None--',       'First',
+  'Last',           'All',
+  'Custom'
+]
+23
+[
+  '--None--',            'Text',
+  'Regex Selector',      'Path',
+  'Fixed',               'Full Value',
+  '--None--',            'Text',
+  'Number',              'Date',
+  'Currency',            '--None--',
+  'Attached File Names', 'To',
+  'From',                'From Name',
+  'CC',                  'Text Body',
+  'HTML Body',           'Subject',
+  'Header',              'MessageId',
+  'Email Send Date',     '--None--',
+  'First',               'Last',
+  'All',                 'Custom'
+]
+28
+FP-000368Open FP-000368 Preview
+2024-11-07 20:28:10
+[ '--None--', 'Create Record', 'Attach To Record' ]
+3
+Account Name (Name)
+49
+[ '' ]
+49
+[ '-- None --', 'lastName' ]
+2
+[ '-- None --', 'lastName', '-- None --', 'sendDate' ]
+4
+{"Name":"lastName","SLAExpirationDate__c":"sendDate"}

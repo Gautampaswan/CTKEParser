@@ -1,0 +1,60 @@
+[
+  '--None--',
+  'CC',
+  'From',
+  'From Name',
+  'Header',
+  'Subject',
+  'To',
+  'Attachments',
+  'Attachment File Names',
+  'Special Flags'
+]
+10
+[
+  '--None--',
+  'Contains',
+  'Ends With',
+  'Matches Regex',
+  'Starts with',
+  'Matches Text'
+]
+6
+[ '--None--', 'Text', 'Regex Selector', 'Path', 'Fixed', 'Full Value' ]
+6
+[
+  '--None--',       'Text',
+  'Regex Selector', 'Path',
+  'Fixed',          'Full Value',
+  '--None--',       'Attached File Names',
+  'To',             'From',
+  'From Name',      'CC',
+  'Text Body',      'HTML Body',
+  'Subject',        'Header',
+  'MessageId',      'Email Send Date'
+]
+18
+[
+  '--None--',       'Text',
+  'Regex Selector', 'Path',
+  'Fixed',          'Full Value',
+  '--None--',       'Attached File Names',
+  'To',             'From',
+  'From Name',      'CC',
+  'Text Body',      'HTML Body',
+  'Subject',        'Header',
+  'MessageId',      'Email Send Date',
+  '--None--',       'First',
+  'Last',           'All',
+  'Custom'
+]
+23
+FP-000353Open FP-000353 Preview
+sourabh.kumar@cynoteck.com
+[]
+0
+Last Name (LastName)
+44
+[ '-- None --', 'email' ]
+2
+{"LastName":"email"}

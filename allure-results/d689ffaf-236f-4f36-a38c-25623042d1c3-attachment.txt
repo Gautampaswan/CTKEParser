@@ -1,0 +1,74 @@
+[
+  '--None--',
+  'CC',
+  'From',
+  'From Name',
+  'Header',
+  'Subject',
+  'To',
+  'Attachments',
+  'Attachment File Names',
+  'Special Flags'
+]
+10
+[
+  '--None--',
+  'Contains',
+  'Ends With',
+  'Matches Regex',
+  'Starts with',
+  'Matches Text'
+]
+6
+[ '--None--', 'Text', 'Regex Selector', 'Path', 'Fixed', 'Full Value' ]
+6
+[
+  '--None--',       'Text',
+  'Regex Selector', 'Path',
+  'Fixed',          'Full Value',
+  '--None--',       'Attached File Names',
+  'To',             'From',
+  'From Name',      'CC',
+  'Text Body',      'HTML Body',
+  'Subject',        'Header',
+  'MessageId',      'Email Send Date'
+]
+18
+[
+  '--None--',       'Text',
+  'Regex Selector', 'Path',
+  'Fixed',          'Full Value',
+  '--None--',       'Attached File Names',
+  'To',             'From',
+  'From Name',      'CC',
+  'Text Body',      'HTML Body',
+  'Subject',        'Header',
+  'MessageId',      'Email Send Date',
+  '--None--',       'First',
+  'Last',           'All',
+  'Custom'
+]
+23
+FP-000365Open FP-000365 Preview
+LLM & Red Teaming.docx
+[]
+0
+Attach To Record action selected. Running Save Attachment functionality.
+[
+  '--None--',
+  'Create Record',
+  'Attach To Record',
+  'EP-000396',
+  'EP-000395',
+  'EP-000394',
+  'EP-000393',
+  'EP-000392',
+  'New Email Parser',
+  '--None--',
+  'File (ContentDocument)',
+  'Email',
+  'Attachment'
+]
+13
+Skipping Build button click for Attach To Record action.
+Skipping field mapping for Attach To Record action.

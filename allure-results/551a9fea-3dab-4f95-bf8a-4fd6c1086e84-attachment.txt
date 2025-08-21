@@ -1,0 +1,53 @@
+[
+  '--None--',
+  'CC',
+  'From',
+  'From Name',
+  'Header',
+  'Subject',
+  'To',
+  'Attachments',
+  'Attachment File Names',
+  'Special Flags'
+]
+10
+[ '--None--', 'Text', 'Regex Selector', 'Path', 'Fixed', 'Full Value' ]
+6
+[
+  '--None--',       'Text',
+  'Regex Selector', 'Path',
+  'Fixed',          'Full Value',
+  '--None--',       'Attached File Names',
+  'To',             'From',
+  'From Name',      'CC',
+  'Text Body',      'HTML Body',
+  'Subject',        'Header',
+  'MessageId',      'Email Send Date'
+]
+18
+[
+  '--None--',       'Text',
+  'Regex Selector', 'Path',
+  'Fixed',          'Full Value',
+  '--None--',       'Attached File Names',
+  'To',             'From',
+  'From Name',      'CC',
+  'Text Body',      'HTML Body',
+  'Subject',        'Header',
+  'MessageId',      'Email Send Date',
+  '--None--',       'First',
+  'Last',           'All',
+  'Custom'
+]
+23
+FP-000362Open FP-000362 Preview
+LLM & Red Teaming.docx
+[ '--None--', 'Create Record', 'Attach To Record' ]
+3
+Create Record action selected. Skipping Save Attachment functionality.
+Performing Build functionality for Create Record action.
+Account Name (Name)
+49
+[ '-- None --', 'Name' ]
+2
+{"Name":"Name"}

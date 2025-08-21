@@ -1,0 +1,79 @@
+[
+  '--None--',
+  'CC',
+  'From',
+  'From Name',
+  'Header',
+  'Subject',
+  'To',
+  'Attachments',
+  'Attachment File Names',
+  'Special Flags'
+]
+10
+[
+  '--None--',
+  'Contains',
+  'Ends With',
+  'Matches Regex',
+  'Starts with',
+  'Matches Text'
+]
+6
+[ '--None--', 'Text', 'Regex Selector', 'Path', 'Fixed', 'Full Value' ]
+6
+[
+  '--None--',       'Text',
+  'Regex Selector', 'Path',
+  'Fixed',          'Full Value',
+  '--None--',       'Attached File Names',
+  'To',             'From',
+  'From Name',      'CC',
+  'Text Body',      'HTML Body',
+  'Subject',        'Header',
+  'MessageId',      'Email Send Date'
+]
+18
+[
+  '--None--',       'Text',
+  'Regex Selector', 'Path',
+  'Fixed',          'Full Value',
+  '--None--',       'Attached File Names',
+  'To',             'From',
+  'From Name',      'CC',
+  'Text Body',      'HTML Body',
+  'Subject',        'Header',
+  'MessageId',      'Email Send Date',
+  '--None--',       'First',
+  'Last',           'All',
+  'Custom'
+]
+23
+FP-000360Open FP-000360 Preview
+[
+  '--None--',
+  'Any of Characters',
+  'BlankSpace',
+  'Position',
+  'Regex',
+  'Text Delimiter'
+]
+6
+[
+  '--None--',
+  'End of Line',
+  'Text Delimiter',
+  'Regex',
+  'Any of Characters',
+  'Position',
+  'BlankSpace'
+]
+7
+ CTK Email Parser.
+[]
+0
+Last Name (LastName)
+44
+[ '-- None --', 'lastName' ]
+2
+{"LastName":"lastName"}
