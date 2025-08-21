@@ -7,7 +7,7 @@ class emailParserActions {
         //------------------Email Parser Actions (Before Build)------------------//
         this.page = page;
 
-        this.emailParser = page.locator("[title='Email Parsers']");
+        this.emailParser = page.locator("a[title='Email Parsers']");
 
         this.emailParserActions = page.locator("[name='New']").nth(2);
 
@@ -64,7 +64,7 @@ class emailParserActions {
 
         this.fieldMappingSaveButton = page.locator(".slds-m-left_x-small");
         
-        this.closebutton = page.locator("[title='Close this window']");
+        this.closebutton = page.locator("[data-key='close']");
 
         //For Validating the Field Mapping Value
         this.mappingValue = page.locator('[slot="output"]').last();
@@ -74,7 +74,7 @@ class emailParserActions {
 
         this.editButton = page.locator('[title="Edit Active"]');
     
-        this.activeCheckBox = page.locator("[part='checkbox']");
+        this.activeCheckBox = page.locator("[name='ctkemailparser__Active__c']").last();
 
         this.saveButton = page.locator('[name="SaveEdit"]');
 
@@ -83,7 +83,7 @@ class emailParserActions {
 
         this.emailParserJob = page.locator("//span[text()='Email Parser Jobs']");
        
-        this.parserJobRecord = page.locator('[rel="noreferrer"]');
+        this.parserJobRecord = page.locator('[data-label="Email Parser Job Name"] .slds-truncate ').first();
       
         this.replayEditButton = page.locator("//span[text()='Edit Replay Job']");
 
@@ -103,7 +103,7 @@ class emailParserActions {
         await this.emailParser.click();
 
         //Click on recent created Email Parser
-        await this.page.locator("[data-navigable='true']").first().click();
+        await this.page.locator("[data-label='Email Parser ID'] div.slds-truncate").first().click();
 
         //Zoom Out For Capturing Email Filter Actions----
         await this.page.evaluate(() => {
@@ -120,6 +120,7 @@ class emailParserActions {
         await this.page.reload();
 
         //Enter Email Parser Action Name
+        await this.page.waitForTimeout(3000);
         await this.emailParserActionName.fill(emailParser_ActionName,);//also change value with => const emailActionName = 'create record for email parser'; //Need to change as per requirement
 
         //Click On Type Dropdown.     
@@ -140,7 +141,8 @@ class emailParserActions {
             const typeOptionValue = await this.typeCount.locator(".slds-media__body").nth(i).textContent();
            
             if (this.actionTypeOptionName.includes(typeOptionValue)) {
-      
+                
+                await this.page.waitForTimeout(3000);
                 await this.typeCount.locator(".slds-media__body").nth(i).click();
                 break;
             }

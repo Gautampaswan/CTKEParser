@@ -26,7 +26,6 @@ class emailFilter {
         this.sequence = page.locator('input.slds-input[name="ctkemailparser__Sequence__c"]');
 
         this.saveButton = page.locator("[name='SaveEdit']");
-        //
 
         //--------For OPERATION DROPDOWN---------//
 

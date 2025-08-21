@@ -59,9 +59,9 @@ class emailFilter {
         await this.emailParser.click();
 
         //Create Filter For First Sequence--- Domain Verification
-        //Click on recent created Email Parser
+        //Click on recent created Email Parser to continue create the email filter 
         await this.page.waitForTimeout(3000);
-        await this.page.locator("[data-navigable='true']").first().click();
+        await this.page.locator("[data-label='Email Parser ID'] div.slds-truncate").first().click();
 
         //Click on New Button of Email Filters
         await this.emailFilterNew.click();
