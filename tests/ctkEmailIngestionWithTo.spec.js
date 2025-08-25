@@ -2,12 +2,13 @@
 const { test, expect } = require('@playwright/test');
 
 const { loginPage } = require('../pageObject/loginPage_To');
+const {CTKEmailParserSetUp} = require('../pageObject/CTKEmailParserSetUp');
 const { emailParser } = require('../pageObject/emailParser_To');
 const { emailFilter } = require('../pageObject/emailFilter_To');
 const { fieldParser } = require('../pageObject/fieldParser_To');
 const { emailParserActions } = require('../pageObject/emailParserActions_To');
 
-test('Test the functionality related to - TO Filter ', async ({ page }) => {
+test('Test the functionality related to - TO Filter With enabled Contact Ingestion', async ({ page }) => {
   
     //Creating a login page using constructor
     const login_Page = new loginPage(page);
@@ -24,6 +25,9 @@ test('Test the functionality related to - TO Filter ', async ({ page }) => {
     //Waiting for all API's call to be made
     await page.waitForLoadState('networkidle');
 
+    const ctkEmailParserSetUp = new CTKEmailParserSetUp(page);
+    await ctkEmailParserSetUp.EmailSetUp();
+
     //----------------------------------------------EMAIL PARSER------------------------------------------------//
 
     //Creating a New Email Parser using constructorsss
@@ -35,7 +39,7 @@ test('Test the functionality related to - TO Filter ', async ({ page }) => {
     //Waiting for all API's call to be made
     await page.waitForLoadState('networkidle');
 
-    //---------------------------------------------- EMAIL FILTER -------------------------------------------------//
+    //----------------------------------------------EMAIL FILTER-------------------------------------------------//
 
     const email_Filter = new emailFilter(page);
 
