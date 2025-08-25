@@ -15,8 +15,8 @@ test('Test the functionality related to Subject Filter ', async ({ page }) => {
     //Calling goto method from the loginPage class
     await login_Page.goto();
     
-    const user_name = 'sumit.arya@resilient-unicorn-4jj5tk.com';
-    const pass_word = 'Developer@149';
+    const user_name = 'optimus6293@gmail.com';
+    const pass_word = 'Sourabh@123';
 
     //Calling Valid Login Method from login Page Class
     await login_Page.validLogin(user_name, pass_word);
@@ -40,7 +40,7 @@ test('Test the functionality related to Subject Filter ', async ({ page }) => {
     const email_Filter = new emailFilter(page);
 
     const email_Filter_Name = 'Subject_Verification';
-    const filter_Value = 'CTK Email Parser.';
+    const filter_Value = 'approved offer';
     const email_Sequence = '1';
 
     //Calling newEmailFilter Method from emailFilter Class
@@ -60,7 +60,7 @@ test('Test the functionality related to Subject Filter ', async ({ page }) => {
     //-------------------------------------------BUILD => FIELD PARSER----------------------------------------//
 
 
-    const range_StartValue = `For`;//Need to Change as per Requirement
+    const range_StartValue = `demo`;//Need to Change as per Requirement
     
     //const range_EndValue = `End of Line`;//Need to Change as per Requirement
 
