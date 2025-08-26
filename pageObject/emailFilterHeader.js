@@ -7,7 +7,7 @@ class emailFilter {
         this.page = page;
 
         //Create Filter For First Sequence--- Domain Verification
-        this.emailParser = page.locator("[title='Email Parsers']");
+        this.emailParser = page.locator("a[title='Email Parsers']");
 
         this.emailFilterNew = page.locator("[name='New']").nth(0);
 
@@ -65,7 +65,7 @@ class emailFilter {
 
         //Create Filter For First Sequence--- Domain Verification
         //Click on recent created Email Parser
-        await this.page.locator("[data-navigable='true']").first().click();
+        await this.page.locator("[data-label='Email Parser ID'] div.slds-truncate").first().click();
 
         //Click on New Button of Email Filters
         await this.emailFilterNew.click();
@@ -145,7 +145,7 @@ class emailFilter {
           
         //To Validate the Object Type.
         await this.page.waitForTimeout(3000);
-        await expect(this.valueValidation).toHaveText("Test Attachment For CTK Email Parser.");
+        await expect(this.valueValidation).toHaveText("demo - approved offer");
         
         //By Clicking on Email Parser Move Back to the Record
         await this.EPreturn.click();

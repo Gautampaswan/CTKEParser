@@ -16,8 +16,9 @@ test('Test the Functionality Related to Header Filter', async ({ page }) => {
     //Calling goto method from the loginPage class
     await login_Page.goto();
     
-    const user_name = 'sumit.arya@resilient-unicorn-4jj5tk.com';
-    const pass_word = 'Developer@149';
+    
+    const user_name = 'optimus6293@gmail.com';
+    const pass_word = 'Sourabh@123';
 
     //Calling Valid Login Method from login Page Class
     await login_Page.validLogin(user_name, pass_word);
@@ -41,7 +42,7 @@ test('Test the Functionality Related to Header Filter', async ({ page }) => {
     const email_Filter = new emailFilter(page);
 
     const email_Filter_Name = 'Header Verification';
-    const filter_Value = 'Test Attachment For CTK Email Parser.';
+    const filter_Value = 'demo - approved offer';
     const email_Sequence = '1';
 
     //Calling newEmailFilter Method from emailFilter Class
