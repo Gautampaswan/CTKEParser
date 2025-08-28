@@ -17,6 +17,8 @@ class exportAndImport {
         this.clickExportButton = page.getByTitle('Export Email Parsers');
         this.exportText = page.getByText('Email Parser records exported successfully!', { exact: true });
         this.importDropdown = page.locator("//span[@title ='Import']");
+        this.upload = page.getByText('Upload Files', { exact: true });
+        //.locator("[data-key='upload']");
     
     }
 
@@ -64,25 +66,31 @@ class exportAndImport {
     
             // Search Sales on Search Bar and Select Sales App
             await this.page.locator('[placeholder="Search apps and items..."]').fill("CTK", { delay: 100 });
-            
+    
             // Click on CTK Email Parser App
             await this.CTKEmail.click();
             await this.clickCTKEmailParser.click();
             await this.page.waitForTimeout(5000);
-            
-          
-          
-           
-            if (await this.exportText.isVisible()) {
-                console.log("Export successfully");
-            } else {
-                console.log("Did not export");
-            }
+    
+            // Click Import dropdown and Upload
+            await this.importDropdown.click();
+            //await this.upload.click();
+    
+            // ⬇️ Upload the file here
+            const fileChooserPromise = this.page.waitForEvent('filechooser');
+            await this.upload.click(); // this should trigger the file chooser
+            const fileChooser = await fileChooserPromise;
+    
+            await fileChooser.setFiles("C:/Users/cyno/Downloads/EmailParserExport (10).eppack"); 
+            // replace path with your file path
+    
+            console.log("File uploaded successfully");
     
         } catch (error) {
-            console.log("Error during export:", error);
+            console.log("❌ Error during import:", error);
         }
     }
+    
     
 }
 
