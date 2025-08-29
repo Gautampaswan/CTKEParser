@@ -69,7 +69,7 @@ test("Test the Functionality Related to Attachment", async ({ page }) => {
 
   const object_Type = "Account"; //Need to change as per requirement (Object Name)
 
-  const filterCriteria_fieldName = "Name = 'sForce'"; //Need to change as per requirement.
+  const filterCriteria_fieldName = "Name = 'BFD CONSTRUCTION LLC'"; //Need to change as per requirement.
 
   //Calling newEmailParserActions Method from emailParserActions Class
   await email_Parser_Actions.newEmailParserAction(emailParser_ActionName,object_Type,emailParserAction_Sequence,filterCriteria_fieldName);

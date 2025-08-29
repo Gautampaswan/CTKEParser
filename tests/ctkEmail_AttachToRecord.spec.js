@@ -16,8 +16,8 @@ test("Tested the functionality related to Attach To Record and Attach As - File 
   //Calling goto method from the loginPage class
   await login_Page.goto();
 
-  const user_name = "sumit.arya@resilient-unicorn-4jj5tk.com";
-  const pass_word = "Developer@149";
+  const user_name = 'optimus6293@gmail.com';
+  const pass_word = 'Sourabh@123';
 
   //Calling Valid Login Method from login Page Class
   await login_Page.validLogin(user_name, pass_word);
@@ -80,7 +80,7 @@ test("Tested the functionality related to Attach To Record and Attach As - File 
 
   const emailParser_ActionName = "Create Record for a Particular Object."; //also change value with => const emailActionName = 'create record for email parser'; //Need to change as per requirement
 
-  const filterCriteria_fieldName = "Name = 'Alice Wilson Household'"; //Need to change as per requirement
+  const filterCriteria_fieldName = "Name = 'BFD CONSTRUCTION LLC'"; //Need to change as per requirement
 
   const object_Type = "Account"; //Need to change as per requirement (Object Name)
 

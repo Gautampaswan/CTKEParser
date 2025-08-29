@@ -1,5 +1,7 @@
 class emailParser {
+
   constructor(page) {
+
     this.page = page;
 
     this.appLauncher = page.locator(".slds-icon-waffle");
@@ -12,7 +14,7 @@ class emailParser {
 
     this.emailParserName = page.locator("[type='text']").nth(0);
 
-    this.checkBox = page.locator("[part='checkbox']");
+    this.checkBox = page.locator("[name='ctkemailparser__Active__c']");
 
     this.filterConfig = page.locator("[role='combobox']");
 

@@ -6,7 +6,7 @@ class emailParserActions {
     //------------------Email Parser Actions (Before Build)------------------//
     this.page = page;
 
-    this.emailParser = page.locator("[title='Email Parsers']");
+    this.emailParser = page.locator("a[title='Email Parsers']");
 
     this.emailParserActions = page.locator("[name='New']").nth(2);
 
@@ -67,7 +67,7 @@ class emailParserActions {
 
     this.fieldMappingSaveButton = page.locator(".slds-m-left_x-small");
 
-    this.closebutton = page.locator("[title='Close this window']");
+    this.closebutton = page.locator("[data-key='close']");
 
     // For Validating the Field Mapping Value
     this.mappingValue = page.locator('[slot="output"]').last();
@@ -84,7 +84,7 @@ class emailParserActions {
 
     this.emailParserJob = page.locator("//span[text()='Email Parser Jobs']");
 
-    this.parserJobRecord = page.locator('[rel="noreferrer"]').first();
+    this.parserJobRecord = page.locator('[data-label="Email Parser Job Name"] .slds-truncate ').first();
 
     this.replayEditButton = page.locator("//span[text()='Edit Replay Job']");
 
@@ -98,15 +98,15 @@ class emailParserActions {
   }
 
   async newEmailParserAction(emailParser_ActionName,object_Type,emailParserAction_Sequence,filterCriteria_fieldName) {
+
     // Click On Email Parser
     await this.emailParser.click();
 
     // Click on recent created Email Parser
-    await this.page.locator("[data-navigable='true']").first().click();
+    await this.page.locator("[data-label='Email Parser ID'] div.slds-truncate").first().click();
 
     // Zoom Out For Capturing Email Filter Actions
-    await this.page.evaluate(() => {
-      document.body.style.transform = "scale(55%)";
+    await this.page.evaluate(() => {    document.body.style.transform = "scale(55%)";
     });
 
     await this.page.waitForTimeout(3000);
@@ -122,7 +122,7 @@ class emailParserActions {
     await this.emailParserActionName.fill(emailParser_ActionName);
 
     // Click On Type Dropdown.
-    await this.page.waitForTimeout(3000);
+    await this.page.waitForTimeout(5000);
     await this.actionType.click();
 
     // Getting the Text of Type Option
@@ -138,7 +138,7 @@ class emailParserActions {
       const typeOptionValue = await this.typeCount.locator(".slds-media__body").nth(i).textContent();
 
       if (this.actionTypeOptionName.includes(typeOptionValue)) {
-    
+        await this.page.waitForTimeout(3000);
         await this.typeCount.locator(".slds-media__body").nth(i).click();
         break;
       }
@@ -211,7 +211,7 @@ class emailParserActions {
       await this.page.waitForTimeout(3000);
       await expect(this.objectTypeValidation).toHaveText("Account");
 
-      await this.page.pause();
+      //await this.page.pause();
 
       await this.buildButton.click(); // Only clicking if it's a 'Create Record' action
 
@@ -297,6 +297,7 @@ class emailParserActions {
     await this.editButton.click();
 
     // Marking Active Checkbox
+    await this.page.waitForTimeout(3000);
     await this.activeCheckBox.click();
     await expect(this.activeCheckBox).toBeChecked();
     
@@ -316,12 +317,15 @@ class emailParserActions {
     await this.replayEditButton.click();
 
     // Enable Replay Job
+    await this.page.waitForTimeout(3000);
     await this.replayJobCheckBox.click();
 
     // Save Replay Job
+    await this.page.waitForTimeout(3000);
     await this.saveButtonReplayJob.click();
 
     // Switch to Related Tab
+    await this.page.waitForTimeout(3000);
     await this.relatedTab.click();
 
     // Open Email Parser Log

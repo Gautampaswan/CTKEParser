@@ -10,7 +10,7 @@ class emailParser {
 
     this.emailParserName = page.locator("[type='text']").nth(0);
 
-    this.checkBox = page.locator("[part='checkbox']");
+    this.checkBox = page.locator('[name="ctkemailparser__Active__c"]');
 
     this.filterConfig = page.locator("[role='combobox']");
 
@@ -32,9 +32,7 @@ class emailParser {
     await this.searchBar.click();
 
     //Search Sales on Search Bar and Select Sales App
-    await this.page
-      .locator('[placeholder="Search apps and items..."]')
-      .fill("CTK", { delay: 100 });
+    await this.page.locator('[placeholder="Search apps and items..."]').fill("CTK", { delay: 100 });
 
     //Click on CTK Email Parser App
     await this.CTKEmail.click();

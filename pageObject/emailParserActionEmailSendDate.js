@@ -7,7 +7,7 @@ class EmailParserActions {
             //------------------Email Parser Actions (Before Build)------------------//
             this.page = page;
     
-            this.emailParser = page.locator("[title='Email Parsers']");
+            this.emailParser = page.locator("a[title='Email Parsers']");
     
             this.emailParserActions = page.locator("[name='New']").nth(2);
     
@@ -57,6 +57,7 @@ class EmailParserActions {
             this.fieldMappingName = 'Last Name (LastName)'; //Need to change as per requirement
     
             this.fieldMappingName_date = 'SLAExpirationDate__c'; // Example field to map
+
     
             //---------------------SELECT SOURCE DROPDOWN VALUE----------------------//
     
@@ -74,7 +75,7 @@ class EmailParserActions {
     
             this.fieldMappingSaveButton = page.locator(".slds-m-left_x-small");
             
-            this.closebutton = page.locator("[title='Close this window']");
+            this.closebutton = page.locator("[data-key='close']");
     
             //For Validating the Field Mapping Value
             this.mappingVaue = page.locator('[slot="output"]').last();
@@ -84,7 +85,7 @@ class EmailParserActions {
     
             this.editButton = page.locator('[title="Edit Active"]');
         
-            this.activeCheckBox = page.locator("[part='checkbox']");
+            this.activeCheckBox = page.locator("[name='ctkemailparser__Active__c']").last();
     
             this.saveButton = page.locator('[name="SaveEdit"]');
     
@@ -93,7 +94,7 @@ class EmailParserActions {
     
             this.emailParserJob = page.locator("//span[text()='Email Parser Jobs']");
            
-            this.parserJobRecord = page.locator('[rel="noreferrer"]').first();
+            this.parserJobRecord = page.locator('[data-label="Email Parser Job Name"] .slds-truncate ').first();
           
             this.replayEditButton = page.locator("//span[text()='Edit Replay Job']");
     
@@ -113,7 +114,7 @@ class EmailParserActions {
             await this.emailParser.click();
     
             //Click on recent created Email Parser
-            await this.page.locator("[data-navigable='true']").first().click();
+            await this.page.locator("[data-label='Email Parser ID'] div.slds-truncate").first().click();
     
             //Zoom Out For Capturing Email Filter Actions----
             await this.page.evaluate(() => {
@@ -270,6 +271,7 @@ class EmailParserActions {
             }
     
             //Click on Source
+            await this.page.waitForTimeout(3000);
             await this.sourceDropdown_date.click();
     
             //Getting the Text of Type Option
@@ -330,12 +332,15 @@ class EmailParserActions {
             await this.replayEditButton.click();
     
             //Click on the Replay Job Checkbox
+            await this.page.waitForTimeout(3000);
             await this.replayJobCheckBox.click();
     
             //Click on the Save button after matrked the replay job chcek box checked
+            await this.page.waitForTimeout(3000);
             await this.saveButtonReplayJob.click();
     
             //CLcik on the Related tab to verify the Email Parser Log
+            await this.page.waitForTimeout(3000);
             await this.relatedTab.click();
     
             //Click on the EMail Parser Log

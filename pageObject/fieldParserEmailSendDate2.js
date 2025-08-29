@@ -218,6 +218,7 @@ class fieldParser_2 {
         await this.dateTimeFormat.click();
 
         //click on the First Option of Date Time Format Dropdown.
+        await this.page.waitForTimeout(3000);
         await this.dateTimeOption.click();
 
         //Click on the Load Email from Job (For Email JOb)

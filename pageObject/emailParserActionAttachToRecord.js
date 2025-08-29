@@ -6,7 +6,7 @@ class emailParserActions {
     //------------------Email Parser Actions (Before Build)------------------//
     this.page = page;
 
-    this.emailParser = page.locator("[title='Email Parsers']");
+    this.emailParser = page.locator("a[title='Email Parsers']");
 
     this.emailParserActions = page.locator("[name='New']").nth(2);
 
@@ -85,7 +85,7 @@ class emailParserActions {
 
     this.fieldMappingSaveButton = page.locator(".slds-m-left_x-small");
 
-    this.closebutton = page.locator("[title='Close this window']");
+    this.closebutton = page.locator("[data-key='close']");
 
     // For Validating the Field Mapping Value
     this.mappingValue = page.locator('[slot="output"]').last();
@@ -94,7 +94,7 @@ class emailParserActions {
 
     this.editButton = page.locator('[title="Edit Active"]');
 
-    this.activeCheckBox = page.locator("[name='ctkemailparser__Active__c']");
+    this.activeCheckBox = page.locator("[name='ctkemailparser__Active__c']").last();
 
     this.saveButton = page.locator('[name="SaveEdit"]');
 
@@ -102,7 +102,7 @@ class emailParserActions {
 
     this.emailParserJob = page.locator("//span[text()='Email Parser Jobs']");
 
-    this.parserJobRecord = page.locator('[rel="noreferrer"]').first();
+    this.parserJobRecord = page.locator('[data-label="Email Parser Job Name"] .slds-truncate ').first();
 
     this.replayEditButton = page.locator("//span[text()='Edit Replay Job']");
 
@@ -120,14 +120,15 @@ class emailParserActions {
     await this.emailParser.click();
 
     // Click on recent created Email Parser
-    await this.page.locator("[data-navigable='true']").first().click();
+    await this.page.locator("[data-label='Email Parser ID'] div.slds-truncate").first().click();
+
 
     // Zoom Out For Capturing Email Filter Actions
     await this.page.evaluate(() => {
       document.body.style.transform = "scale(55%)";
     });
 
-    await this.page.waitForTimeout(3000);
+    
     await this.page.keyboard.down("End");
 
     // Click on New Button Of Email Parser Actions
@@ -157,6 +158,8 @@ class emailParserActions {
       const typeOptionValue = await this.typeCount.locator(".slds-media__body").nth(i).textContent();
  
       if (this.actionTypeOptionName.includes(typeOptionValue)) {
+
+        await this.page.waitForTimeout(3000);
         await this.typeCount.locator(".slds-media__body").nth(i).click();
         break;
       }
@@ -176,14 +179,14 @@ class emailParserActions {
 
     // Condition to check for 'Create Record' or 'Attach To Record'
     if (this.actionTypeOptionName === "Attach To Record") {
-      console.log(
-        "Attach To Record action selected. Running Save Attachment functionality."
-      );
+      console.log("Attach To Record action selected. Running Save Attachment functionality.");
 
       // Click on the Save Attachment Checkbox
+      await this.page.waitForTimeout(3000);
       await this.saveAttachments.click();
 
       //Click on the Attach As Dropdown
+      await this.page.waitForTimeout(3000);
       await this.attachToRecord.click();
 
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -203,6 +206,7 @@ class emailParserActions {
         const attachAsValue = await this.attachAsCount.locator(".slds-media__body").nth(i).textContent();
 
         if (this.attachAsOptionName.includes(attachAsValue)) {
+          await this.page.waitForTimeout(3000);
           await this.attachAsCount.locator(".slds-media__body").nth(i).click();
           break;
         }
@@ -217,9 +221,7 @@ class emailParserActions {
 
       await this.filterCriteriaText.fill(filterCriteria_fieldName);
     } else if (this.actionTypeOptionName === "Create Record") {
-      console.log(
-        "Create Record action selected. Skipping Save Attachment functionality."
-      );
+      console.log("Create Record action selected. Skipping Save Attachment functionality.");
       // Skip the Save Attachments and Filter Criteria functionality
     }
 
@@ -347,7 +349,7 @@ class emailParserActions {
 
 	       //To Validate the Field Criteria Value.
          await this.page.waitForTimeout(3000);
-         await expect(this.filterCriteriaValidation).toHaveText("Name = 'Alice Wilson Household'");
+         await expect(this.filterCriteriaValidation).toHaveText("Name = 'BFD CONSTRUCTION LLC'");
 
     // Return to EPA Record
     await this.EPAreturn.click();
@@ -376,12 +378,15 @@ class emailParserActions {
     await this.replayEditButton.click();
 
     // Enable Replay Job
+    await this.page.waitForTimeout(3000);
     await this.replayJobCheckBox.click();
 
     // Save Replay Job
+        await this.page.waitForTimeout(3000);
     await this.saveButtonReplayJob.click();
 
     // Switch to Related Tab
+    await this.page.waitForTimeout(3000);
     await this.relatedTab.click();
 
     // Open Email Parser Log

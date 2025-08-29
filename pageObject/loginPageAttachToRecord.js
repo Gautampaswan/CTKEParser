@@ -1,5 +1,7 @@
 class loginPage {
+
   constructor(page) {
+    
     this.page = page;
 
     this.username = page.locator("input#username");

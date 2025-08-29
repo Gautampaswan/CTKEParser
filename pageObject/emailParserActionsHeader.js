@@ -214,6 +214,8 @@ class emailParserActions {
             const fieldMappingValue = await this.fieldMappingNameCount.locator("td").nth(n).textContent();
 
             if (this.fieldMappingName.includes(fieldMappingValue)) {
+
+                await this.page.waitForTimeout(3000);
                 await this.fieldMappingNameCount.locator("td").nth(n).click();
                 break;
             }
@@ -237,6 +239,8 @@ class emailParserActions {
             const sourceOptionValue = await this.sourceValueCount.locator(".slds-media__body").nth(s).textContent();
 
             if (this.fieldMappingName2.includes(sourceOptionValue)) {
+
+                await this.page.waitForTimeout(3000);
                 await this.sourceValueCount.locator(".slds-media__body").nth(s).click();
                 break;
             }
@@ -281,12 +285,15 @@ class emailParserActions {
         await this.replayEditButton.click();
 
         //Click on the Replay Job Checkbox
+        await this.page.waitForTimeout(3000);
         await this.replayJobCheckBox.click();
 
         //Click on the Save button after matrked the replay job chcek box checked
+        await this.page.waitForTimeout(3000);
         await this.saveButtonReplayJob.click();
 
         //CLcik on the Related tab to verify the Email Parser Log
+        await this.page.waitForTimeout(3000);
         await this.relatedTab.click();
 
         //Click on the EMail Parser Log

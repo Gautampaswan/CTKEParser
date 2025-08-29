@@ -288,12 +288,15 @@ class emailParserActions {
         await this.replayEditButton.click();
 
         //Click on the Replay Job Checkbox
+        await this.page.waitForTimeout(3000);
         await this.replayJobCheckBox.click();
 
         //Click on the Save button after matrked the replay job chcek box checked
+        await this.page.waitForTimeout(3000);
         await this.saveButtonReplayJob.click();
 
         //CLcik on the Related tab to verify the Email Parser Log
+        await this.page.waitForTimeout(3000);
         await this.relatedTab.click();
 
         //Click on the EMail Parser Log

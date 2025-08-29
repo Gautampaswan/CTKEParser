@@ -16,8 +16,8 @@ test('Tested the functionality related to - Attachment File Name', async ({ page
     //Calling goto method from the loginPage class
     await login_Page.goto();
     
-    const user_name = "sumit.arya@resilient-unicorn-4jj5tk.com";
-    const pass_word = "Developer@149";
+    const user_name = 'optimus6293@gmail.com';
+    const pass_word = 'Sourabh@123';
 
     //Calling Valid Login Method from login Page Class
     await login_Page.validLogin(user_name, pass_word);
@@ -41,7 +41,7 @@ test('Tested the functionality related to - Attachment File Name', async ({ page
     const email_Filter = new emailFilter(page);
 
     const email_Filter_Name = 'Attachment File Name Verification';
-    const filter_Value = 'LLM & Red Teaming.docx';
+    const filter_Value = 'Cynoteck_Employye _2-july.xlsx';
     const email_Sequence = '1';
 
     //Calling newEmailFilter Method from emailFilter Class
@@ -58,10 +58,8 @@ test('Tested the functionality related to - Attachment File Name', async ({ page
     await field_Parser.newFieldParser(reference_Name);
 
    //-------------------------------------------BUILD => FIELD PARSER----------------------------------------//
-
-    
+ 
     await field_Parser.newBuildFieldParser();
-
 
     //--------------------------------------------EMAIL PARSER ACTIONS---------------------------------------//
 
@@ -71,7 +69,7 @@ test('Tested the functionality related to - Attachment File Name', async ({ page
 
     const emailParser_ActionName = 'Create Record for a Particular Object.'; //also change value with => const emailActionName = 'create record for email parser'; //Need to change as per requirement
     
-    const filterCriteria_fieldName = "Name = 'sForce'"; //Need to change as per requirement
+    const filterCriteria_fieldName = "Name = 'BFD CONSTRUCTION LLC'"; //Need to change as per requirement
 
     const object_Type = 'Account' //Need to change as per requirement (Object Name)
     
