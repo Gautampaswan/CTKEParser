@@ -1,15 +1,13 @@
 
 const { test, expect } = require('@playwright/test');
 
-const { loginPage } = require('../pageObject/loginPage_To');
-const {CTKEmailParserSetUp} = require('../pageObject/CTKEmailParserSetUp');
-const { emailParser } = require('../pageObject/emailParser_To');
-const { emailFilter } = require('../pageObject/emailFilter_To');
-const { fieldParser } = require('../pageObject/fieldParser_To');
-const { emailParserActions } = require('../pageObject/emailParserActions_To');
-const {CTKUploadFileOnAcc} = require('../pageObject/CTKUploadFileOnAcc');
+const { loginPage } = require('../pageObject/loginPage_FromName');
+const { emailParser } = require('../pageObject/emailParser_FromName');
+const { emailFilter } = require('../pageObject/emailFilterTextBody');
+const { fieldParser } = require('../pageObject/fieldParser_FromName');
+const { emailParserActions } = require('../pageObject/emailParserActions_FromName');
 
-test('Test the functionality related to - TO Filter With enabled Contact Ingestion', async ({ page }) => {
+test('Test the functionality related to From Name Filter ', async ({ page }) => {
   
     //Creating a login page using constructor
     const login_Page = new loginPage(page);
@@ -26,9 +24,6 @@ test('Test the functionality related to - TO Filter With enabled Contact Ingesti
     //Waiting for all API's call to be made
     await page.waitForLoadState('networkidle');
 
-    const ctkEmailParserSetUp = new CTKEmailParserSetUp(page);
-    await ctkEmailParserSetUp.removeAccountIngestion();
-
     //----------------------------------------------EMAIL PARSER------------------------------------------------//
 
     //Creating a New Email Parser using constructorsss
@@ -44,8 +39,8 @@ test('Test the functionality related to - TO Filter With enabled Contact Ingesti
 
     const email_Filter = new emailFilter(page);
 
-    const email_Filter_Name = 'Domain_Verification';
-    const filter_Value = 'salesforce.com';
+    const email_Filter_Name = 'Name_Verification';
+    const filter_Value = 'Kumar';
     const email_Sequence = '1';
 
     //Calling newEmailFilter Method from emailFilter Class
@@ -56,7 +51,7 @@ test('Test the functionality related to - TO Filter With enabled Contact Ingesti
 
     const field_Parser = new fieldParser(page);
 
-    const reference_Name = 'email' //Change as per the field_api_name from salesforce
+    const reference_Name = 'lastName' //Change as per the field_api_name from salesforce
 
     //Calling newFieldParser Method from fieldParser Class
     await field_Parser.newFieldParser(reference_Name);
@@ -64,14 +59,10 @@ test('Test the functionality related to - TO Filter With enabled Contact Ingesti
     //-------------------------------------------BUILD => FIELD PARSER----------------------------------------//
 
     //const range_StartValue = `,`;//Need to Change as per Requirement
-
-    const start_Position = '0';//Need to Change as per Requirement
-
-    const start_PositionCharacterNo  = '0';//Need to Change as per Requirement
     
-    const range_EndValue = '@';//Need to Change as per Requirement
+    // const range_EndValue = `.`;//Need to Change as per Requirement
 
-    await field_Parser.newBuildFieldParser(start_Position, start_PositionCharacterNo, range_EndValue);
+    await field_Parser.newBuildFieldParser();
 
 
     //--------------------------------------------EMAIL PARSER ACTIONS---------------------------------------//
@@ -85,36 +76,7 @@ test('Test the functionality related to - TO Filter With enabled Contact Ingesti
     const object_Type = 'Contact' //Need to change as per requirement (Object Name)
     
     //Calling newEmailParserActions Method from emailParserActions Class
-    
     await email_Parser_Actions.newEmailParserAction(emailParser_ActionName, object_Type, emailParserAction_Sequence);
 
     });
-
-    test('Account Test ', async ({ page }) => {
-        //Creating a login page using constructor
-    const login_Page = new loginPage(page);
-
-    //Calling goto method from the loginPage class
-    await login_Page.goto();
-    
-    const user_name = 'optimus6293@gmail.com';
-    const pass_word = 'Sourabh@123';
-
-    //Calling Valid Login Method from login Page Class
-    await login_Page.validLogin(user_name, pass_word);
-
-    //Waiting for all API's call to be made
-    await page.waitForLoadState('networkidle');
-
-     const CTKUploadFileonAcc = new CTKUploadFileOnAcc(page);
-     await CTKUploadFileonAcc.UploadFileOnAccount();
-    });
-
-    //Test the functionality when when user uploads eml file with Account Ingestion enable After Source Attachment.
-
-    test('Test the functionality when when user uploads eml file with Account Ingestion enable',async ({ page }) => {
-
-        
-    }
-);
 

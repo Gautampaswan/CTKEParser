@@ -7,7 +7,11 @@ class emailParser {
     this.searchBar = page.locator("[placeholder='Search apps and items...']");
 
     this.CTKEmail = page.locator("//p[text()=' Email Parser']");
-
+    this.clickCTKEmailParser = page.locator("//span[text()= 'CTK Email Parser Setup']");
+    this.ClickIngestEmail = page.locator("//span[text() = 'Ingest Emails via Document Upload']");
+    this.clickContactOption = page.locator("//span[text() = 'Contact (Contact)']");
+    this.moveToAvailable = page.locator("[title='Move to Available']");
+    this.clickSaveButton = page.locator("//button[text()='Save']");
     this.emailParserName = page.locator("[type='text']").nth(0);
 
     this.checkBox = page.locator('[name="ctkemailparser__Active__c"]');
@@ -23,6 +27,26 @@ class emailParser {
     this.emailParserRecordName = page.locator('slot[name="output"] [slot="output"]').nth(1);
 
   }
+
+  async renoveIngestion() {
+         //Click on App Launcher Button
+        await this.appLauncher.click();
+
+        //Click on Search Bar
+        await this.searchBar.click();
+
+        //Search Sales on Search Bar and Select Sales App
+        await this.page.locator('[placeholder="Search apps and items..."]').fill("CTK", { delay: 100 });
+        
+        //Click on CTK Email Parser App
+        await this.CTKEmail.click();
+        await this.clickCTKEmailParser.click();
+        await this.ClickIngestEmail.click();
+        await this.clickContactOption.click();
+        await this.moveToAvailable.click();
+        await this.clickSaveButton.click();
+    }
+
 
   async newEmailParser(expect) {
     //Click on App Launcher Button

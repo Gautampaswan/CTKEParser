@@ -77,12 +77,13 @@ class exportAndImport {
             //await this.upload.click();
     
             // ⬇️ Upload the file here
-            const fileChooserPromise = this.page.waitForEvent('filechooser');
-            await this.upload.click(); // this should trigger the file chooser
-            const fileChooser = await fileChooserPromise;
+            // const fileChooserPromise = this.page.waitForEvent('filechooser');
+            // await this.upload.click(); // this should trigger the file chooser
+            // const fileChooser = await fileChooserPromise;
     
-            await fileChooser.setFiles("C:/Users/cyno/Downloads/EmailParserExport (10).eppack"); 
+            // await fileChooser.setFiles("C:/Users/cyno/Downloads/EmailParserExport (10).eppack"); 
             // replace path with your file path
+             await this.page.setInputFiles("input[type='file']", "C:/Users/GautamPaswan/Downloads/EmailParserExport (10).eppack");
     
             console.log("File uploaded successfully");
     

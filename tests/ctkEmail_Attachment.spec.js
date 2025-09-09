@@ -2,6 +2,7 @@
 const { test, expect } = require("@playwright/test");
 
 const { loginPage } = require("../pageObject/loginPageAttachment");
+const {CTKEmailParserSetUp} = require('../pageObject/CTKEmailParserSetUp');
 const { emailParser } = require("../pageObject/emailParserAttachment");
 const { emailFilter } = require("../pageObject/emailFilterAttachment");
 const { fieldParser } = require("../pageObject/fieldParserAttachment");
@@ -22,6 +23,9 @@ test("Test the Functionality Related to Attachment", async ({ page }) => {
 
   //Waiting for all API's call to be made
   await page.waitForLoadState("networkidle");
+
+  const ctkEmailParserSetUp = new CTKEmailParserSetUp(page);
+  await ctkEmailParserSetUp.removeAccountIngestion();
 
   //----------------------------------------------EMAIL PARSER------------------------------------------------//
 

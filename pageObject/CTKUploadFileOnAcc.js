@@ -19,6 +19,7 @@ class CTKUploadFileOnAcc {
         this.clickSaveButton = page.getByRole('button', { name: 'Save', exact: true });
         //this.clickAccountname = page.locator("//span[text()='Bill']");
         this.clickRelatedButton = page.locator("//a[text() = 'Related']");
+        this.clickRelatedButtonEmailJob = page.getByRole('tab', { name: 'Related' });
         this.clickUploadButton = page.locator("//span[text() = 'Upload Files']");
         this.clickDoneButton = page.getByRole('button', { name: 'Done' });
        
@@ -43,17 +44,20 @@ class CTKUploadFileOnAcc {
     }
 
     // 🔑 Directly upload file into hidden input[type=file]
-    await this.page.setInputFiles("input[type='file'][name='fileInput']", "C:/Users/cyno/Downloads/FW_ Email test.eml");
+    await this.page.setInputFiles("input[type='file'][name='fileInput']", "C:/Users/GautamPaswan/Downloads/Test attachment file.eml");
     await this.clickDoneButton.click();
 
     console.log("File uploaded successfully ");
 
       // Step 2: Click Email Parser Jobs
     await this.page.click("//span[text()='Email Parser Jobs']");
+    
+    // await this.page.click("[title='Select a List View: Email Parser Jobs']");
+    // await this.page.getByText('All', { exact: true }).click();
 
     // Step 3: Click job by title
-    await this.page.click("[title='EPJ-000012']");
-    await this.clickRelatedButton.click();
+    await this.page.locator("[data-label='Email Parser Job Name']").nth(0).click();
+    await this.clickRelatedButtonEmailJob.click();
 
 
     // Step 4: Click Email Parser Log → handle new tab
@@ -76,30 +80,37 @@ class CTKUploadFileOnAcc {
 
 
     // Step 1: Get the full text from the element
-    const logText = await newPage.locator(
-    "[style='word-wrap: break-word; white-space: pre-wrap;']"
+const logText = await newPage.locator(
+  "[style='word-wrap: break-word; white-space: pre-wrap;']"
 ).innerText();
 
-    console.log("Extracted log text:\n", logText);
+console.log("Extracted log text:\n", logText);
 
-    // Step 2: Split log into lines
-    const lines = logText.split("\n");
+// Step 2: Split log into lines
+const lines = logText.split("\n");
 
-    // Step 3: Track line numbers with "Criteria Met : false"
-    let failedLines = [];
+// Step 3: Find lines with Criteria Met
+let failedLines = [];
+let passedLines = [];
 
-    lines.forEach((line, index) => {
-    if (line.trim().toLowerCase() === "criteria met : false") {
-    failedLines.push(index + 1); // +1 to make it human-readable (line starts from 1)
+lines.forEach((line, index) => {
+  const normalized = line.trim().toLowerCase();
+
+  if (normalized === "criteria met : false") {
+    failedLines.push(index + 1); // record line number
+  } else if (normalized === "criteria met : true") {
+    passedLines.push(index + 1);
   }
 });
 
-    // Step 4: Check results
-    if (failedLines.length > 0) {
+// Step 4: Check results
+if (failedLines.length > 0) {
   console.error(`❌ Test Failed: Found 'Criteria Met : false' at line(s): ${failedLines.join(", ")}`);
   throw new Error("Test failed due to 'Criteria Met : false'");
+} else if (passedLines.length > 0) {
+  console.log("✅ Test Passed: All 'Criteria Met' values are true");
 } else {
-  console.log("✅ Test Passed: All 'Criteria Met' are true");
+  console.warn("⚠️ No 'Criteria Met' lines found in log — check locator or log output.");
 }
   }
 
