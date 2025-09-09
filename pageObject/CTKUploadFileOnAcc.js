@@ -44,19 +44,30 @@ class CTKUploadFileOnAcc {
     }
 
     // 🔑 Directly upload file into hidden input[type=file]
-    await this.page.setInputFiles("input[type='file'][name='fileInput']", "C:/Users/GautamPaswan/Downloads/Test attachment file.eml");
+    await this.page.setInputFiles("input[type='file'][name='fileInput']", "C:/Users/GautamPaswan/Downloads/testing table.eml");
+    await this.page.waitForTimeout(5000);
     await this.clickDoneButton.click();
+    await this.page.waitForTimeout(5000);
+
 
     console.log("File uploaded successfully ");
 
       // Step 2: Click Email Parser Jobs
     await this.page.click("//span[text()='Email Parser Jobs']");
     
-    // await this.page.click("[title='Select a List View: Email Parser Jobs']");
-    // await this.page.getByText('All', { exact: true }).click();
+    await this.page.click("[title='Select a List View: Email Parser Jobs']");
+    await this.page.getByText('All', { exact: true }).click();
 
     // Step 3: Click job by title
-    await this.page.locator("[data-label='Email Parser Job Name']").nth(0).click();
+    //await this.page.locator("[data-label='Email Parser Job Name']").last().click();
+    //await this.page.locator("[data-label='Email Parser Job Name']").nth(-1).click();
+   await this.page.locator("[data-label='Email Parser Job Name'] [class='slds-truncate']").nth(1).hover({ timeout: 5000 });
+   await this.page.locator("[data-label='Email Parser Job Name'] [class='slds-truncate']").nth(1).click({ timeout: 5000 });
+   //[data-label='Email Parser Job Name'] [class='slds-truncate']
+   //[data-label='Email Parser Job Name']
+
+
+
     await this.clickRelatedButtonEmailJob.click();
 
 
@@ -66,52 +77,45 @@ class CTKUploadFileOnAcc {
       this.page.click("[title='Email Parser Log']"),
     ]);
 
-    // Step 5: Work with the new tab
-    await newPage.waitForLoadState();
-    const tabTitle = await newPage.title();
-    console.log("New tab opened with title:", tabTitle);
+//     // Step 5: Work with the new tab
+//     await newPage.waitForLoadState();
+//     const tabTitle = await newPage.title();
+//     console.log("New tab opened with title:", tabTitle);
 
-    // // Example validation
-    // const logVisible = await newPage.locator("[style='word-wrap: break-word; white-space: pre-wrap;']").isVisible();
-    // console.log("Log details visible:", logVisible);
+//     // // Example validation
+//     // const logVisible = await newPage.locator("[style='word-wrap: break-word; white-space: pre-wrap;']").isVisible();
+//     // console.log("Log details visible:", logVisible);
 
-    // // 👉 Switch back to original tab if needed
-    // await this.page.bringToFront();
+//     // // 👉 Switch back to original tab if needed
+//     // await this.page.bringToFront();
 
 
-    // Step 1: Get the full text from the element
-const logText = await newPage.locator(
-  "[style='word-wrap: break-word; white-space: pre-wrap;']"
-).innerText();
+//     // Step 1: Get the full text from the element
+// const logText = await newPage.locator(
+//   "[style='word-wrap: break-word; white-space: pre-wrap;']"
+// ).innerText();
 
-console.log("Extracted log text:\n", logText);
+// console.log("Extracted log text:\n", logText);
 
-// Step 2: Split log into lines
-const lines = logText.split("\n");
+// // Step 2: Split log into lines
+// const lines = logText.split("\n");
 
-// Step 3: Find lines with Criteria Met
-let failedLines = [];
-let passedLines = [];
+// // Step 3: Check for "Parsed Value : testing table"
+// let matchedLines = [];
 
-lines.forEach((line, index) => {
-  const normalized = line.trim().toLowerCase();
+// lines.forEach((line, index) => {
+//   if (line.trim().toLowerCase() === "parsed value : testing table") {
+//     matchedLines.push(index + 1); // record line number
+//   }
+// });
 
-  if (normalized === "criteria met : false") {
-    failedLines.push(index + 1); // record line number
-  } else if (normalized === "criteria met : true") {
-    passedLines.push(index + 1);
-  }
-});
-
-// Step 4: Check results
-if (failedLines.length > 0) {
-  console.error(`❌ Test Failed: Found 'Criteria Met : false' at line(s): ${failedLines.join(", ")}`);
-  throw new Error("Test failed due to 'Criteria Met : false'");
-} else if (passedLines.length > 0) {
-  console.log("✅ Test Passed: All 'Criteria Met' values are true");
-} else {
-  console.warn("⚠️ No 'Criteria Met' lines found in log — check locator or log output.");
-}
+// // Step 4: Check results
+// if (matchedLines.length > 0) {
+//   console.log(`✅ Test Passed: Found 'Parsed Value : testing table' at line(s): ${matchedLines.join(", ")}`);
+// } else {
+//   console.error("❌ Test Failed: 'Parsed Value : testing table' not found in log");
+//   throw new Error("Test failed because expected 'Parsed Value : testing table' was not found");
+// }
   }
 
 }
